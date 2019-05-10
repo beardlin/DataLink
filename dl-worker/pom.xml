@@ -22,5 +22,6 @@
 		<module>dl-worker-reader-hbase</module>
 		<module>dl-worker-writer-hdfs</module>
 		<module>dl-worker-writer-hbase</module>
+		<module>dl-worker-writer-kafka</module>
 	</modules>
 </project>

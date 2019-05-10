@@ -744,3 +744,39 @@
         </form>
     </div>
 </div>
+<div id="div-kafka" class="col-sm-12 panel panel-info" style="display:none;">
+    <div class="panel-heading">
+        <h1 class="panel-title">Kafka Writer</h1>
+    </div>
+    <div class="panel-body">
+        <form id="form-kafka" class="form-horizontal" role="form">
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="col-sm-5 control-label no-padding-right"
+                           for="kafka-servers">bootstrap.servers</label>
+
+                    <div class="col-sm-7">
+                        <input type='text' id='kafka-servers' name="kafkaservers"
+                               style="width:100%;"
+                               value="${taskModel.writerParameterMap['writer-kafka'].servers}"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label class="col-sm-5 control-label no-padding-right"
+                           for="kafka-topic">Topic</label>
+
+                    <div class="col-sm-7">
+                        <input type='text' id='kafka-topic' name="kafkatopic"
+                               style="width:100%;"
+                               value="${taskModel.writerParameterMap['writer-kafka'].topic}"/>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>

@@ -10,7 +10,7 @@ import java.util.List;
  * Created by lubiao on 2017/2/28.
  */
 public enum MediaSourceType {
-    MYSQL, SQLSERVER, ORACLE, HDFS, HBASE, ELASTICSEARCH, SDDL, ZOOKEEPER, POSTGRESQL;
+    MYSQL, SQLSERVER, ORACLE, HDFS, HBASE, ELASTICSEARCH, SDDL, ZOOKEEPER, POSTGRESQL, KAFKA;
 
     public boolean isRdbms() {
         if (MYSQL.equals(this) || SQLSERVER.equals(this) || ORACLE.equals(this) || POSTGRESQL.equals(this)) {

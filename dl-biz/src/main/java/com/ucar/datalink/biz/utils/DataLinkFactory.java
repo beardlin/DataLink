@@ -1,5 +1,7 @@
 package com.ucar.datalink.biz.utils;
 
+import org.springframework.context.ApplicationContext;
+
 import java.util.Map;
 
 /**
@@ -17,6 +19,7 @@ public class DataLinkFactory {
     }
 
     public static <T> Map<String, T> getBeansOfType(Class<T> clazz) {
-        return ContextHolder.getApplicationContext().getBeansOfType(clazz);
+        ApplicationContext applicationContext = ContextHolder.getApplicationContext();
+        return applicationContext.getBeansOfType(clazz);
     }
 }

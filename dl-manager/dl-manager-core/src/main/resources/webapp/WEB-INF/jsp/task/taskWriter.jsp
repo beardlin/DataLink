@@ -42,6 +42,14 @@
                        onchange="hbaseClicked();"/>
                 <span class="lbl">HBase</span>
             </label>
+            <label class="middle col-sm-2">
+                <input class="ace" type="checkbox" id="kafka-checkbox"
+                        <c:if test="${taskModel.currentWriters['writer-kafka']==1}">
+                            checked
+                        </c:if>
+                       onchange="kafkaClicked();"/>
+                <span class="lbl">Kafka</span>
+            </label>
         </span>
     </div>
 
@@ -114,6 +122,14 @@
         }
     }
 
+    function kafkaClicked() {
+        if ($('#kafka-checkbox').prop("checked") == true) {
+            $('#div-kafka').show();
+        } else {
+            $('#div-kafka').hide();
+        }
+    }
+
     function getWritersObj() {
         var obj = {};
         if ($('#rdbms-checkbox').prop("checked") == true) {
@@ -174,6 +190,13 @@
                 maxRetryTimes: $("#hbase-maxRetryTimes").val(),
                 retryMode: $("#hbase-retryMode").val(),
                 perfStatistic: $("#hbase-perfStatistic").val()
+            };
+        }
+        if ($('#kafka-checkbox').prop("checked") == true) {
+            obj['writer-kafka'] = {
+                "@type": "com.ucar.datalink.domain.plugin.writer.kafka.KafkaWriterParameter",
+                servers: $("#kafka-servers").val(),
+                topic: $("#kafka-topic").val()
             };
         }
         return obj;

@@ -76,6 +76,8 @@ public class MediaSourceServiceImpl implements MediaSourceService {
             checkEsInfo(mediaSourceInfo);
         } else if (mediaSourceInfo.getParameterObj().getMediaSourceType() == MediaSourceType.HBASE) {
             checkHBaseInfo(mediaSourceInfo);
+        } else if (mediaSourceInfo.getParameterObj().getMediaSourceType() == MediaSourceType.KAFKA) {
+            checkKafkaInfo(mediaSourceInfo);
         } else {
             checkRdbmsInfo(mediaSourceInfo);
         }
@@ -291,6 +293,14 @@ public class MediaSourceServiceImpl implements MediaSourceService {
         String namePrefix = "hbase_";
         if (!msName.startsWith(namePrefix)) {
             throw new ValidationException(String.format("HBase名称必须以%s为前缀.", namePrefix));
+        }
+    }
+
+    public void checkKafkaInfo(MediaSourceInfo mediaSourceInfo) {
+        String msName = mediaSourceInfo.getName();
+        String namePrefix = "kafka_";
+        if (!msName.startsWith(namePrefix)) {
+            throw new ValidationException(String.format("Kafka名称必须以%s为前缀.", namePrefix));
         }
     }
 

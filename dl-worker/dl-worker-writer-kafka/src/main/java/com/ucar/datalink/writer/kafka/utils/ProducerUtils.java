@@ -1,6 +1,8 @@
 package com.ucar.datalink.writer.kafka.utils;
 
+import com.alibaba.fastjson.JSON;
 import com.ucar.datalink.contract.log.kafka.KafkaEventRecord;
+import com.ucar.datalink.contract.log.rdbms.RdbEventRecord;
 import com.ucar.datalink.domain.plugin.writer.kafka.KafkaWriterParameter;
 import com.ucar.datalink.worker.api.task.TaskWriterContext;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -17,17 +19,23 @@ public class ProducerUtils {
 
     private static Properties properties;
 
-    public static void sendMessage(List<KafkaEventRecord> records, TaskWriterContext context) {
+    public static void sendMessage(List<RdbEventRecord> records, TaskWriterContext context) {
 
         String topic = getParameter(context).getTopic();
 
-        Producer<String, KafkaEventRecord> producer = new KafkaProducer<>(getProperties(context));
-        //
-        for (KafkaEventRecord record: records) {
-            producer.send(new ProducerRecord<>(topic, "key", record));
+        try {
+            Producer<String, String> producer = new KafkaProducer<>(getProperties(context));
+
+            for (RdbEventRecord record: records) {
+                String content = JSON.toJSONString(record);
+                producer.send(new ProducerRecord<>(topic, "key", "test111"));
+            }
+
+            producer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        producer.close();
     }
 
     static Properties getProperties(TaskWriterContext context) {
@@ -39,7 +47,7 @@ public class ProducerUtils {
             properties.put("bootstrap.servers", servers);
             properties.put("acks", "all");
             properties.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-            properties.put("value.serializer", "com.ucar.datalink.contract.log.kafka.KafkaEventRecord");
+            properties.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         }
 
         return properties;

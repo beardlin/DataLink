@@ -21,12 +21,6 @@
             <version>0.0.2</version>
         </dependency>
 
-        <!-- kafka -->
-        <dependency>
-            <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka-clients</artifactId>
-            <version>2.2.0</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -37,7 +31,7 @@
                     <descriptors>
                         <descriptor>src/main/assembly/package.xml</descriptor>
                     </descriptors>
-                    <finalName>writer-rdbms</finalName>
+                    <finalName>writer-kafka</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                     <outputDirectory>${project.parent.parent.build.directory}/dl-worker/plugin/writer
                     </outputDirectory>

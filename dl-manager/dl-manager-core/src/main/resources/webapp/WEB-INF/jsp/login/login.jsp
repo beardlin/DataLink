@@ -28,7 +28,7 @@
                         <h1>
                             <i class="ace-icon fa fa-automobile light-blue"></i>
                             <span class="red"></span>
-                            <span class="white" id="id-text2">Datalink集中管理平台</span>
+                            <span class="white" id="id-text2">Datalink数据采集平台</span>
                         </h1>
                     </div>
 
@@ -87,9 +87,9 @@
                     </div>
                     <!-- /.position-relative -->
 
-                    <div class="center">
-                        <h4 class="light-blue" id="id-company-text">&copy; 神州优车</h4>
-                    </div>
+<%--                    <div class="center">
+                        <h4 class="light-blue" id="id-company-text">&copy; 联创高科</h4>
+                    </div>--%>
                 </div>
             </div>
             <!-- /.col -->

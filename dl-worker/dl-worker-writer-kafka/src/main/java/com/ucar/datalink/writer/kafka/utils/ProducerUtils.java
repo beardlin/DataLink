@@ -28,7 +28,7 @@ public class ProducerUtils {
 
             for (RdbEventRecord record: records) {
                 String content = JSON.toJSONString(record);
-                producer.send(new ProducerRecord<>(topic, "key", "test111"));
+                producer.send(new ProducerRecord<>(topic, "key", content));
             }
 
             producer.close();
